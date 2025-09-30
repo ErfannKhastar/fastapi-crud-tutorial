@@ -45,4 +45,3 @@ def get_current_user(
     token = verify_access_token(token, credentials_exception)
     user = db.query(models.User).filter(models.User.id == token.id).first()
     return user
-

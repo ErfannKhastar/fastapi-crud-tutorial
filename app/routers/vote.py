@@ -1,4 +1,4 @@
-from fastapi import Response, status, HTTPException, Depends, APIRouter
+from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from .. import models, schemas, oauth2
 from ..database import get_db
@@ -16,7 +16,9 @@ def vote(
 
     post = db.query(models.Post.id).filter(models.Post.id == vote.post_id).first()
     if not post:
-        raise HTTPException(status_code=404, detail=f"Post with id {vote.post_id} does not exist")
+        raise HTTPException(
+            status_code=404, detail=f"Post with id {vote.post_id} does not exist"
+        )
 
     vote_query = db.query(models.Vote).filter(
         models.Vote.post_id == vote.post_id, models.Vote.user_id == current_user.id

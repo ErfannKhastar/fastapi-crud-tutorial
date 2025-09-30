@@ -3,7 +3,6 @@ from datetime import datetime
 from typing import Optional, Annotated
 
 
-
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
