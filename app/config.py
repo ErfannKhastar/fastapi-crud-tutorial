@@ -6,7 +6,7 @@ configuration settings from a `.env` file or from the system's environment.
 Centralizing configuration in this way is a best practice for modern applications.
 """
 
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -27,9 +27,8 @@ class Settings(BaseSettings):
     algorithm: str
     access_token_expire_minutes: int
 
-    class Config:
-        """Pydantic configuration class to specify the source of the settings."""
-        env_file = ".env"
+    # Pydantic configuration to specify the source of the settings.
+    model_config = SettingsConfigDict(env_file=".env")
 
 
 # Create a single, global instance of the Settings class.

@@ -9,7 +9,7 @@ These schemas are used for:
 Separating schemas from the database models provides a clear and secure API layer.
 """
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 from datetime import datetime
 from typing import Optional, Annotated
 
@@ -34,9 +34,8 @@ class UserOut(BaseModel):
     email: EmailStr
     created_at: datetime
 
-    class Config:
-        # Pydantic's 'from_attributes = True' allows it to read data from ORM models.
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
+    # Pydantic's 'from_attributes = True' allows it to read data from ORM models.
 
 
 class UserLogin(BaseModel):
@@ -74,8 +73,7 @@ class Post(PostBase):
     owner_id: int
     owner: UserOut  # Nested Pydantic model to include owner's public info.
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class PostOut(BaseModel):
@@ -84,8 +82,7 @@ class PostOut(BaseModel):
     Post: Post
     votes: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # --- Token Schemas ---
