@@ -33,11 +33,18 @@ def login(
         db (Session): The database session dependency.
 
     Raises:
+        HTTPException(422): If username or password are not provided.
         HTTPException(403): If the credentials are invalid or incorrect.
 
     Returns:
         schemas.Token: An object containing the JWT access token and token type.
     """
+
+    if not user_credentials.username or not user_credentials.password:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Username and password must be provided",
+        )
 
     # Note: In OAuth2PasswordRequestForm, the 'username' field is used for the email.
     user = (
