@@ -3,5 +3,4 @@ venv/
 .idea
 __pycache__
 .pytest_cache/
-tests/
 docker-compose-dev.yml
