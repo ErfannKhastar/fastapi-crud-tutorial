@@ -1,6 +1,6 @@
 services:
   api:
-    image: erfannkhastar/fastapi-crud-tutorial:latest
+    image: erfannkhastarr/fastapi-crud-tutorial:latest
     depends_on:
       - postgres
     ports:

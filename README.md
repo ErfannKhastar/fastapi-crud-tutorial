@@ -32,35 +32,6 @@ This project serves as a comprehensive example of building a modern web API usin
 -   **Data Validation**: Pydantic
 -   **Authentication**: python-jose, passlib
 
-## Project Structure
-
-```
-.
-├── alembic/                  # Alembic migration scripts
-├── app/                      # Main application source code
-│   ├── routers/              # API routers for different endpoints
-│   │   ├── auth.py
-│   │   ├── post.py
-│   │   ├── user.py
-│   │   └── vote.py
-│   ├── init.py
-│   ├── config.py             # Configuration management (Pydantic settings)
-│   ├── database.py           # Database connection and session management
-│   ├── main.py               # Main FastAPI app entrypoint
-│   ├── models.py             # SQLAlchemy ORM models
-│   ├── oauth2.py             # JWT token creation and verification logic
-│   ├── schemas.py            # Pydantic schemas for data validation
-│   └── utils.py              # Utility functions (e.g., password hashing)
-├── .dockerignore
-├── .env                      # (Should be in .gitignore and not committed)
-├── .gitignore
-├── alembic.ini               # Alembic configuration file
-├── docker-compose-dev.yml    # Docker Compose for development
-├── docker-compose-prod.yml   # Docker Compose for production
-├── Dockerfile
-└── requirements.txt
-```
-
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
@@ -152,7 +123,7 @@ This is the recommended method for development. It uses Docker Compose to build 
 This method simulates a production environment by running the application from a pre-built Docker image.
 
 1.  **Ensure the image exists:**
-    This method assumes that an image `erfannkhastar/fastapi-crud-tutorial:latest` has been pushed to a Docker registry.
+    This method assumes that an image `erfannkhastarr/fastapi-crud-tutorial:latest` has been pushed to a Docker registry.
 2.  **Configure your `.env` file:**
     Make sure `DATABASE_HOST` is set to `postgres`.
 3.  **Run the containers:**
